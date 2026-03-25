@@ -1363,6 +1363,8 @@ export function useTableNavigator<T extends TableItem>(
           return;
         }
 
+        e.preventDefault();
+
         switch (e.key) {
           case 'ArrowUp':
           case 'k':
@@ -1380,7 +1382,6 @@ export function useTableNavigator<T extends TableItem>(
 
           case 'Enter':
           case 'Tab':
-            e.preventDefault();
             e.stopPropagation();
 
             onMove(
