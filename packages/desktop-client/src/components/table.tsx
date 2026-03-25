@@ -1363,12 +1363,11 @@ export function useTableNavigator<T extends TableItem>(
           return;
         }
 
-        e.preventDefault();
-
         switch (e.key) {
           case 'ArrowUp':
           case 'k':
             if (e.target.tagName !== 'INPUT') {
+              e.preventDefault();
               onMove('up');
             }
             break;
@@ -1376,12 +1375,14 @@ export function useTableNavigator<T extends TableItem>(
           case 'ArrowDown':
           case 'j':
             if (e.target.tagName !== 'INPUT') {
+              e.preventDefault();
               onMove('down');
             }
             break;
 
           case 'Enter':
           case 'Tab':
+            e.preventDefault();
             e.stopPropagation();
 
             onMove(
