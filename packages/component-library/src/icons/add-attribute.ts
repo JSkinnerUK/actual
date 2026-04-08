@@ -14,8 +14,13 @@ const positionMethod = {
 } as const;
 
 const addJSXAttribute = ({ types: t, template }: PluginAPI, opts: Options) => {
-  function getAttributeValue({ literal, value }: Pick<Attribute, 'literal' | 'value'>):
-    BabelTypes.JSXExpressionContainer | BabelTypes.StringLiteral | null {
+  function getAttributeValue({
+    literal,
+    value,
+  }: Pick<Attribute, 'literal' | 'value'>):
+    | BabelTypes.JSXExpressionContainer
+    | BabelTypes.StringLiteral
+    | null {
     if (typeof value === 'boolean') {
       return t.jsxExpressionContainer(t.booleanLiteral(value));
     }
